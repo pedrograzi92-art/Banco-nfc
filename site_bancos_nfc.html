@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f6fb">
+<title>Abrir meu banco</title>
+<style>
+  :root { color-scheme: light; --ink:#172033; --muted:#667085; --line:#e5e9f2; --bg:#f4f6fb; --card:#fff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
+  main { width:min(720px,100%); margin:0 auto; padding:28px 18px 40px; }
+  header { text-align:center; padding:16px 8px 24px; }
+  .mark { width:58px;height:58px;border-radius:18px;background:#172033;color:#fff;display:grid;place-items:center;margin:0 auto 14px;font-size:27px; }
+  h1 { margin:0 0 8px;font-size:clamp(26px,5vw,36px);letter-spacing:-.7px; }
+  header p { margin:0 auto;max-width:480px;color:var(--muted);line-height:1.5; }
+  .search { width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:white;font-size:16px;outline:none;margin:0 0 18px; }
+  .search:focus { border-color:#7b8bb0;box-shadow:0 0 0 3px #dfe6f6; }
+  .grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+  .bank { display:flex;align-items:center;gap:12px;padding:14px 12px;min-height:74px;border:1px solid var(--line);border-radius:15px;background:var(--card);color:var(--ink);text-decoration:none;box-shadow:0 2px 7px #18223008;transition:transform .12s,border-color .12s; }
+  .bank:hover,.bank:focus { border-color:#aab6d0;transform:translateY(-1px);outline:none; }
+  .icon { width:42px;height:42px;border-radius:12px;background:#f0f2f7;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0; }
+  .name { font-size:14px;font-weight:700;line-height:1.25; }
+  .hint { display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:4px; }
+  .note { margin:20px 2px 0;padding:14px 15px;background:#fff;border:1px solid var(--line);border-radius:14px;color:var(--muted);font-size:12px;line-height:1.55; }
+  .note strong { color:var(--ink); }
+  footer { text-align:center;color:var(--muted);font-size:11px;padding:18px 8px 0; }
+  @media(max-width:390px){ .grid{grid-template-columns:1fr}.bank{min-height:66px} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="mark" aria-hidden="true">↗</div>
+    <h1>Abrir meu banco</h1>
+    <p>Escolha seu banco para tentar abrir o aplicativo oficial.</p>
+  </header>
+  <label for="search" style="display:block;font-size:13px;font-weight:700;margin:0 0 8px">Encontrar banco</label>
+  <input id="search" class="search" type="search" placeholder="Digite o nome do banco..." autocomplete="off">
+  <section class="grid" id="banks" aria-label="Bancos disponíveis">
+    <a class="bank" data-name="Banco do Brasil" href="https://www.bb.com.br/"><span class="icon">BB</span><span class="name">Banco do Brasil<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Caixa Econômica Federal Caixa" href="https://www.caixa.gov.br/"><span class="icon">CAIXA</span><span class="name">Caixa Econômica<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Itaú" href="https://www.itau.com.br/"><span class="icon">Itaú</span><span class="name">Itaú<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Bradesco" href="https://banco.bradesco/"><span class="icon">BRA</span><span class="name">Bradesco<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Santander" href="https://www.santander.com.br/"><span class="icon">SAN</span><span class="name">Santander<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Nubank Nu" href="https://nubank.com.br/"><span class="icon">nu</span><span class="name">Nubank<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Banco Inter Inter" href="https://inter.co/"><span class="icon">inter</span><span class="name">Inter<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="C6 Bank" href="https://www.c6bank.com.br/"><span class="icon">C6</span><span class="name">C6 Bank<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Mercado Pago" href="https://www.mercadopago.com.br/"><span class="icon">MP</span><span class="name">Mercado Pago<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="PicPay" href="https://picpay.com/"><span class="icon">P</span><span class="name">PicPay<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="PagBank PagSeguro" href="https://pagbank.com.br/"><span class="icon">PB</span><span class="name">PagBank<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Banco PAN" href="https://www.bancopan.com.br/"><span class="icon">PAN</span><span class="name">Banco PAN<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Neon" href="https://neon.com.br/"><span class="icon">N</span><span class="name">Neon<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Next" href="https://next.me/"><span class="icon">next</span><span class="name">next<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="BTG Pactual" href="https://www.btgpactual.com/"><span class="icon">BTG</span><span class="name">BTG Pactual<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Banco Safra" href="https://www.safra.com.br/"><span class="icon">SAF</span><span class="name">Banco Safra<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="BRB Banco de Brasília" href="https://novo.brb.com.br/"><span class="icon">BRB</span><span class="name">BRB<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Sicredi" href="https://www.sicredi.com.br/"><span class="icon">SIC</span><span class="name">Sicredi<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Sicoob" href="https://www.sicoob.com.br/"><span class="icon">SIC</span><span class="name">Sicoob<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Banrisul" href="https://www.banrisul.com.br/"><span class="icon">BAN</span><span class="name">Banrisul<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="Banco Original" href="https://www.original.com.br/"><span class="icon">ORI</span><span class="name">Banco Original<span class="hint">Site oficial</span></span></a>
+    <a class="bank" data-name="BMG" href="https://www.bancobmg.com.br/"><span class="icon">BMG</span><span class="name">Banco BMG<span class="hint">Site oficial</span></span></a>
+  </section>
+  <div class="note"><strong>Observação:</strong> por segurança e compatibilidade, os botões abrem o site oficial do banco. Em muitos celulares, isso não abre diretamente o aplicativo. Esta página não solicita senhas, códigos nem dados bancários.</div>
+  <footer>Escolha sempre o banco e confira o endereço antes de informar qualquer dado.</footer>
+</main>
+<script>
+  const search = document.getElementById('search');
+  const cards = [...document.querySelectorAll('.bank')];
+  search.addEventListener('input', () => {
+    const term = search.value.trim().toLocaleLowerCase('pt-BR');
+    cards.forEach(card => {
+      card.hidden = !card.dataset.name.toLocaleLowerCase('pt-BR').includes(term);
+    });
+  });
+</script>
+</body>
+</html>
